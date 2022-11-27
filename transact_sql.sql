@@ -66,7 +66,6 @@ END
 CLOSE cursor_banco_de_dados 
 DEALLOCATE cursor_banco_de_dados
 
-
 --Remover uma tabela e suas chaves estrangeiras:
 IF EXISTS(SELECT * FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_NAME = 'TABLE_NAME')
 BEGIN
@@ -74,3 +73,26 @@ BEGIN
 	DROP TABLE TABLE_NAME 
 END
 GO
+
+--Criação de uma Function
+--Exemplo:
+CREATE FUNCTION TOTAL_ESTOQUE (VALOR_UNITARIO DECIMAL, ESTOQUE INT)
+RETURNS DECIMAL deterministic 
+RETURN ROUND(VALOR_UNITARIO * ESTOQUE);
+
+--Teste da Function:
+SELECT TOTAL_ESTOQUE(60,10)
+
+
+--Criação de uma Procedure
+--Exemplo:
+CREATE PROCEDURE BUSCA
+@CampoBusca VARCHAR (20) 
+AS
+SELECT CODIGO, DESCRICAO
+FROM NOME_TABELA
+WHERE DESCRICAO = @CampoBusca
+
+
+--Teste:
+EXECUTE Busca 'Procura'
