@@ -65,3 +65,12 @@ END
  
 CLOSE cursor_banco_de_dados 
 DEALLOCATE cursor_banco_de_dados
+
+
+--Remover uma tabela e suas chaves estrangeiras:
+IF EXISTS(SELECT * FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_NAME = 'TABLE_NAME')
+BEGIN
+	ALTER TABLE TABLE_NAME DROP CONSTRAINT FK_NAME
+	DROP TABLE TABLE_NAME 
+END
+GO
