@@ -104,3 +104,9 @@ GO
 
 --Teste:
 EXECUTE Busca 'Procura'
+
+
+--Selecionar a quantidade de datas entre determinada data
+SELECT COUNT(*)
+FROM TABELA
+WHERE DATA BETWEEN '2022-01-22' AND '2022-01-22';
